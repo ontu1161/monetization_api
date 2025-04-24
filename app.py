@@ -11,7 +11,14 @@ def check_monetization():
     data = request.json
     channel_id = data.get('channel_id')
 
-    # এখানে তুমি ইউটিউব API দিয়ে চ্যানেল চেক করতে পারো।
+    import requests
+
+# API Key দরকার হবে
+API_KEY = "YOUR_YOUTUBE_API_KEY"
+URL = f"https://www.googleapis.com/youtube/v3/channels?part=monetizationDetails&id={channel_id}&key={API_KEY}"
+
+res = requests.get(URL).json()
+# তারপর রেসপন্স থেকে তোমার প্রয়োজনীয় ডেটা বের করে দেখাতে পারো
     # আমরা এখন শুধু ডেমো রেসপন্স দিচ্ছি।
     response = {
         "channel_id": channel_id,
